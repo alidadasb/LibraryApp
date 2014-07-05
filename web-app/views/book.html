@@ -5,6 +5,49 @@
     <title></title>
 </head>
 <body>
-<h1>Hi book</h1>
+<h1>Book</h1>
+
+<div class="row" ng-show="error">
+    <span class="label label-danger">{{error}}</span>
+</div>
+<div class="row" ng-show="success">
+    <span class="label label-success">{{success}}</span>
+</div>
+<br>
+
+
+<form class="form-horizontal" role="form">
+    <div class="form-group">
+        <label for="bookTitle" class="col-sm-2 control-label">Book Title</label>
+
+        <div class="col-sm-4">
+            <input ng-model="library.newbook.title" type="text" class="form-control" id="bookTitle" placeholder="Title">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="authorName" class="col-sm-2 control-label">Author Name</label>
+
+        <div class="col-sm-4">
+            <input ng-model="library.newbook.author" type="text" class="form-control" id="authorName" placeholder="Author Name">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="numberOfCopies" class="col-sm-2 control-label">Number of copies</label>
+
+        <div class="col-sm-4">
+            <input ng-model="library.newbook.numberOfCopies" type="text" class="form-control" id="numberOfCopies" placeholder="Number of copies">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button ng-click="saveBook()" type="submit" class="btn btn-default">Save</button>
+        </div>
+    </div>
+</form>
+
+
+
 </body>
 </html>

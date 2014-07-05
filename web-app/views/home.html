@@ -1,29 +1,99 @@
 <!DOCTYPE html>
 <html>
 <head lang="en">
+    <style>
+        .right-inner-addon {
+            position: relative;
+        }
+
+        .right-inner-addon input {
+            padding-right: 30px;
+        }
+
+        .right-inner-addon i {
+            position: absolute;
+            right: 0px;
+            padding: 10px 12px;
+            pointer-events: none;
+        }
+    </style>
+
     <meta charset="UTF-8">
     <title>Home</title>
 </head>
 <body>
-<h1>HOME</h1>
-
-<div ng-include src="'views/partials/_segment.html'"></div>
-
-Name: {{data.result.name}}<br>
-LastName: {{data.result.lastName}}<br>
-Address: {{data.result.address}}<br>
-Age: {{data.result.age}}<br>
-
-<hr>
-
-
-<label>Country Name:</label>
-<input type="text" ng-model="text.name" placeholder="Enter a country name">
+<h1>Home</h1>
+<div class="row" ng-show="error">
+    <span class="label label-danger">{{error}}</span>
+</div>
+<div class="row" ng-show="success">
+    <span class="label label-success">{{success}}</span>
+</div>
 <br>
-<br>
-<select ng-model="myColor" ng-options="country.name for country in countryList | filter:text.name" size="10">
-</select ><br/>
 
+<div class="row"><!--Username segment-->
+    <div class="form-group col-xs-6">
+        <div ng-if="!library.user">
+            <input autofocus type="text" class="form-control" placeholder="Please enter your user name"
+                   ng-model="userNameField" ng-keypress="login(userNameField,$event)">
+        </div>
+        <div ng-if="library.user">
+            Hi <b>{{library.user.name}}</b> welcome to library
+            <a href="#" ng-click="logout()" >logout</a>
+        </div>
+    </div>
+</div>
+
+<h3>Your current reservations </h3>
+<div class="row">
+    <table class="table table-striped">
+        <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>Start date</th>
+        </tr>
+        <tr ng-repeat="item in library.userReservations">
+            <td>{{item.id}}</a></td>
+            <td><span getbook="{{item.book.id}}"></span></td>
+            <td>{{item.startDate}}</td>
+        </tr>
+    </table>
+
+</div>
+
+<h3>Search for a book to reserve</h3>
+<div ng-if="library.user">
+    <div class="row"><!--Search segment-->
+        <div class="form-group col-xs-6">
+            <div class="input-group add-on">
+                <input type="text" class="form-control" placeholder="Search keyword or simply press ENTER"
+                       ng-model="library.searchTerm" ng-keypress="searchBook($event)">
+
+                <div class="input-group-btn">
+                    <button class="btn btn-default" type="submit" ng-click="searchBook();"><i
+                            class="glyphicon glyphicon-search"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Result segment-->
+    <br>
+    Total books found <b>#{{library.searchResult.length}}</b>
+    <table class="table table-striped">
+        <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Available</th>
+        </tr>
+        <tr ng-repeat="item in library.searchResult">
+            <td><a href="#" ng-click="reserve(item);">{{item.id}}</a></td>
+            <td>{{item.title}}</td>
+            <td>{{item.author}}</td>
+            <td>{{item.numberOfCopies}}</td>
+        </tr>
+    </table>
+</div>
 
 </body>
 </html>

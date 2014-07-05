@@ -1,20 +1,25 @@
 class UrlMappings {
 
-	static mappings = {
-        "/$controller/$action?/$id?(.$format)?"{
-            constraints {
-                // apply constraints here
-            }
-        }
+    static mappings = {
+        "/$controller/$action?/$id?(.$format)?" {}
 
         "/"(controller: "clientApp")
-        "500"(view:'/error')
+        "500"(view: '/error')
 
-        "/home"(controller: "clientApp",action: 'home')
-        "/book"(controller: "clientApp",action: 'book')
+        "/home"(controller: "clientApp", action: 'index')
+        "/book"(controller: "clientApp", action: 'book')
         "/"(controller: 'clientApp', action: 'redirectToHome')
+        "/bookManagement"(controller: 'clientApp',action:'index')
+        "/externalApi"(controller: 'clientApp',action:'index')
 
-        "/person/v1/persons/$id?" (resource: "person")
-        "/api/person/$id?" (controller: 'clientApp', action: 'individual')
+        "/books/search" (controller: 'book', action: 'queryBooks')
+        "/users/search" (controller: 'user', action: 'queryUser')
+        "/books"(resources:'book')
+        "/users"(resources:'user')
+        "/reservations"(resources:'reservation')
+        "/reservations/search/user"(controller: 'reservation',action: 'queryReservationByUser')
+
+        "/freeStyle/book/search"(controller: 'clientApp',action: 'treatGrailsApiAsIfItsExternal')
+
     }
 }

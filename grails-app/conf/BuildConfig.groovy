@@ -60,6 +60,12 @@ grails.project.dependency.resolution = {
         runtime ":jquery:1.11.1"
 
         compile ":twitter-bootstrap:3.1.1.3"
+
+        //Consume rest services
         compile ":rest-client-builder:2.0.1"
+
+        // Add sample data
+        compile ":fixtures:1.3"
+        compile ":build-test-data:2.1.2"
     }
 }

@@ -2,23 +2,17 @@ package com.sample.bootstrap.angular
 
 class ClientAppController {
 
-    static defaultAction = "home"
-
     def apiService
 
-    def home() {
+    def index() {
     }
 
     def redirectToHome() {
         redirect(uri: '/home')
     }
 
-    def redirectToBook() {
-        redirect(uri: '/book')
+    def treatGrailsApiAsIfItsExternal(){
+        render apiService.searchBooks(params)
     }
 
-    def individual() {
-        println "Params: $params"
-        render apiService.getPerson()
-    }
 }

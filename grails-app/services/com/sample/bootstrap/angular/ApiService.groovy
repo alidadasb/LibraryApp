@@ -6,12 +6,9 @@ class ApiService {
     static transactional = false
     def rest
 
-    def getPerson() {
-
-        RestResponse result = rest.get("http://localhost:8080/library/person/v1/persons/1")
-
+    def searchBooks(String query) {
+        RestResponse result = rest.get("http://localhost:8080/library/books/search/" + query)
         println "Rest result: " + result
         return result.json
-
     }
 }

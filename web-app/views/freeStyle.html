@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<h1>Freestyle samples</h1>
+
+<h3>Hitting external APIs</h3>
+<label>Country Name:</label>
+<input type="text" ng-model="text.name" placeholder="Enter a name to filter">
+<br>
+<br>
+<select ng-model="myColor" ng-options="country.name for country in countryList | filter:text.name" size="10">
+</select ><br/>
+
+
+<hr>
+
+
+<h3>Using rest plugin</h3>
+<h3>Search for a book by name to press enter to see all</h3>
+<div>
+    <div class="row"><!--Search segment-->
+        <div class="form-group col-xs-6">
+            <div class="input-group add-on">
+                <input type="text" class="form-control" placeholder="Search keyword or simply press ENTER"
+                       ng-model="library.searchTerm" ng-keypress="searchBook($event)">
+
+                <div class="input-group-btn">
+                    <button class="btn btn-default" type="submit" ng-click="searchBook();"><i
+                            class="glyphicon glyphicon-search"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Result segment-->
+    <br>
+    Total books found <b>#{{library.searchResult.length}}</b>
+    <table class="table table-striped">
+        <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Available</th>
+        </tr>
+        <tr ng-repeat="item in library.searchResult">
+            <td>{{item.id}}</a></td>
+            <td>{{item.title}}</td>
+            <td>{{item.author}}</td>
+            <td>{{item.numberOfCopies}}</td>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>
