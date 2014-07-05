@@ -16,19 +16,22 @@
 <br>
 
 
-<form class="form-horizontal" role="form">
+<form name="myForm" class="form-horizontal" role="form">
     <div class="form-group">
         <label for="bookTitle" class="col-sm-2 control-label">Book Title</label>
 
         <div class="col-sm-4">
-            <input ng-model="library.newbook.title" type="text" class="form-control" id="bookTitle" placeholder="Title">
+            <input name="bookTitle" ng-minlength="3" ng-maxlength="10" required ng-model="library.newbook.title" type="text" class="form-control" id="bookTitle" placeholder="Title">
         </div>
+        <span class="error" ng-show="myForm.bookTitle.$error.required">Required!</span><br>
+        <span class="error" ng-show="myForm.bookTitle.$error.minlength">Too short!</span>
+        <span class="error" ng-show="myForm.bookTitle.$error.maxlength">Too long!</span>
     </div>
     <div class="form-group">
         <label for="authorName" class="col-sm-2 control-label">Author Name</label>
 
         <div class="col-sm-4">
-            <input ng-model="library.newbook.author" type="text" class="form-control" id="authorName" placeholder="Author Name">
+            <input required ng-model="library.newbook.author" type="text" class="form-control" id="authorName" placeholder="Author Name">
         </div>
     </div>
 
@@ -36,7 +39,8 @@
         <label for="numberOfCopies" class="col-sm-2 control-label">Number of copies</label>
 
         <div class="col-sm-4">
-            <input ng-model="library.newbook.numberOfCopies" type="text" class="form-control" id="numberOfCopies" placeholder="Number of copies">
+            <input name="numberOfCopies" required ng-model="library.newbook.numberOfCopies" type="number" class="form-control" id="numberOfCopies" placeholder="Number of copies">
+            <span class="error" ng-show="myForm.numberOfCopies.$error.maxlength">Too long!</span>
         </div>
     </div>
 
