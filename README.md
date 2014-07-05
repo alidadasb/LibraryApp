@@ -1,9 +1,9 @@
 LibraryApp
 ==========
 
-A sample application that integrates AngularJs with Grails and work with REST Services.
+A sample application that integrates AngularJs with Grails and work with REST services.
 
-This a simple library application that allows users to reserve books online, and also see their book reservation. It simply exposes 3 resources (users,books,reservations). 
+This a simple library application that allows users to reserve books online, and see their reservation. It simply exposes 3 resources (users,books,reservations). 
 
 Requirement:
 1- User login
@@ -11,7 +11,7 @@ Requirement:
 3- They can search for available books
 4- They can reserve new books
 
-Intention is simply -- "really no intention for coding it this way"
+Intention was simply Just For Fun (JFF)
 
 How to use it: 
 
