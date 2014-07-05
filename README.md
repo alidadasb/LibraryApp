@@ -28,5 +28,5 @@ How to use it:
 
 4- You will see 3 pages, home,book,freestyle. its just different ways of pulling data from REST services by AngularJS and displaying them on the screen. 
 
-5- The 3 ways of hitting REST resrvice are dirrectly from angular, through Grails services or simply hitting external urls :D 
+5- The 3 ways of hitting REST resrvice are dirrectly from angular hitting exposed Grails resources, through Grails services and rest plugin, or simply hitting external urls with angular:D 
 
