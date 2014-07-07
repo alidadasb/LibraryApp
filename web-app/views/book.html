@@ -31,7 +31,8 @@
         <label for="authorName" class="col-sm-2 control-label">Author Name</label>
 
         <div class="col-sm-4">
-            <input required ng-model="library.newbook.author" type="text" class="form-control" id="authorName" placeholder="Author Name">
+            <input  ng-model="library.newbook.author" type="text" class="form-control" id="authorName" placeholder="Author Name">
+            (No client validation exist for this field, to see backend failure leave this field empty)
         </div>
     </div>
 
@@ -39,8 +40,9 @@
         <label for="numberOfCopies" class="col-sm-2 control-label">Number of copies</label>
 
         <div class="col-sm-4">
-            <input name="numberOfCopies" required ng-model="library.newbook.numberOfCopies" type="number" class="form-control" id="numberOfCopies" placeholder="Number of copies">
+            <input ngPattern="/^[0-9]+$/" name="numberOfCopies" required ng-model="library.newbook.numberOfCopies" type="number" class="form-control" id="numberOfCopies" placeholder="Number of copies">
             <span class="error" ng-show="myForm.numberOfCopies.$error.maxlength">Too long!</span>
+            <span class="error" ng-show="!myForm.numberOfCopies.$valid">Not valid</span>
         </div>
     </div>
 

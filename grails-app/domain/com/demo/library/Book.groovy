@@ -6,5 +6,7 @@ class Book {
     Integer numberOfCopies
 
     static constraints = {
+        title nullable: false, blank: false, minSize: 3
+        numberOfCopies nullable: false, matches: /^[0-9]+$/
     }
 }

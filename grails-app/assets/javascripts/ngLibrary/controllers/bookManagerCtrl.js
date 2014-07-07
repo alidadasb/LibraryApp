@@ -17,7 +17,10 @@ angular.module('libraryApp')
             var Books = $resource('/library/books', {}, {save: { method: 'POST', cache: false}});
             Books.save($scope.library.newbook, function (response) {
                 console.log(response);
-                $scope.showSuccess("Successfully saved a book");
+                    $scope.showSuccess("Successfully saved a book");
+
+            },function(error){
+                $scope.showError("Unable saved a book");
             });
         }
 
@@ -26,6 +29,7 @@ angular.module('libraryApp')
 
         // Resetting error after 10 sec
         $scope.showError = function (message) {
+            $scope.success = "";
             $scope.error = message;
 
             $timeout(function () {
@@ -35,6 +39,7 @@ angular.module('libraryApp')
 
         // Resetting success after 10 sec
         $scope.showSuccess = function (message) {
+            $scope.error = "";
             $scope.success = message;
 
             $timeout(function () {
